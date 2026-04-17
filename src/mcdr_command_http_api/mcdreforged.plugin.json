@@ -1,0 +1,14 @@
+{
+  "id": "mcdr_command_http_api",
+  "version": "1.0.0",
+  "name": "MCDR Command HTTP API",
+  "description": {
+    "en_us": "Provide an interface for calling MCDR commands via HTTP",
+    "zh_cn": "提供 HTTP 调用 MCDR 命令的接口"
+  },
+  "author": "Andy Zhang",
+  "link": "https://github.com/AnzhiZhang/MCDReforgedPlugins/tree/master/src/mcdr_command_http_api",
+  "dependencies": {
+    "fastapi_mcdr": "2.0.0"
+  }
+}
