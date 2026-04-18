@@ -40,6 +40,9 @@
     "src/let_me_click_and_send": {
       "package-name": "let_me_click_and_send"
     },
+    "src/mcdr_command_http_api": {
+      "package-name": "mcdr_command_http_api"
+    },
     "src/minecraft_command_register": {
       "package-name": "minecraft_command_register"
     },
