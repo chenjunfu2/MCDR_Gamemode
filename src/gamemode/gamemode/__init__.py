@@ -233,15 +233,24 @@ def load_config(server: PluginServerInterface) -> 'LatestConfig':
     return current_config
 
 
-def on_load(server: PluginServerInterface, old):
-    global config, data, loop_manager, minecraft_data_api, online_player_api
-    config = load_config(server)
-    data = server.load_config_simple(
+def on_server_start_pre(server: PluginServerInterface):
+    global data
+    data = load_data(server)
+    server.logger.info('已重载玩家数据')
+
+
+def load_data(server: PluginServerInterface) -> dict:
+    return server.load_config_simple(
         DATA_FILE_NAME if config.data_path is None else config.data_path,
         default_config={'data': {}},
         in_data_folder=(config.data_path is None),
         echo_in_console=False
     )['data']
+
+def on_load(server: PluginServerInterface, old):
+    global config, data, loop_manager, minecraft_data_api, online_player_api
+    config = load_config(server)
+    data = load_data(server)
     minecraft_data_api = server.get_plugin_instance('minecraft_data_api')
     online_player_api = server.get_plugin_instance('online_player_api')
 
